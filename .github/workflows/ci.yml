@@ -2,13 +2,13 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NODE_VERSION: v12.20.0
+      NODE_VERSION: v18.18.0
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
       with:
         tag_name: ${{ env.NODE_VERSION }}
         release_name: Node.js ${{ env.NODE_VERSION }}
-        body: Node.js ${{ env.NODE_VERSION }} suitable for use with CentOS 6
+        body: Node.js ${{ env.NODE_VERSION }} suitable for use with CentOS 7
         draft: false
         prerelease: false
     - if: steps.release_exists.outputs.exists == false
